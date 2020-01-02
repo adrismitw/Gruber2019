@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GrUber</title>
+        <meta name="description" content="This is the description">
+        <link rel="stylesheet" href="resources/CSS/driver.css" />
+        <!-- <script src="resources/JS/store.js" async></script> -->
+		<script src="https://use.fontawesome.com/d582eb451b.js"></script>
+
+    <body>
+        
+	<div class="topnav">
+	  <a href="#news">My Account</a>
+	  <a class="active" href="#home">List of Customers</a>
+	  <a href="currentRoute.html">Current Route</a>
+	  <a href="contact.html">Contact</a>
+	</div>
+        <section class="container content-section">
+            <h2 class="section-header">Welcome trusted driver!</h2>
+			
+            <div class="shop-items">
+             <img src="/resources/Images/img_avatar2.png" alt="Avatar" class="avatar">
+			
+            
+            </div>
+        </section>
+		<br><br>
+		<footer class="footer">
+			<div class="container">
+				<p class="footerText">GrUber</p>
+			</div>
+		</footer>
+    <!-- Bootstrap cdn files -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.12/jstorage.min.js"></script>
+		<script src="resources/JS/cesta-feira.js"></script>
+		<script type="application/javascript">
+			$( document ).ready(function() {
+			  $.CestaFeira({
+				debug: false,
+				onItemAdded: function (item) {
+				  console.log(item);
+				},
+				onItemUpdated: function (item) {
+				  console.log(item);
+				}
+			  });
+			});
+		</script>
+    </body>
+</html>

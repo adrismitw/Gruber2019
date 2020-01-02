@@ -1,0 +1,254 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GrUber: Shopping Cart</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+	<style type="text/css">
+		body {
+			padding-top: 54px;
+		}
+
+		@media (max-height: 75px) {
+			body {
+				padding-top: 56px;
+			}
+		}
+
+        img {
+            max-height: 75px;
+            width: auto;
+        }
+
+		.cart-item-count {
+			position: relative;
+		}
+
+		.cesta-feira__num-items {
+			position: absolute;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: #fff;
+			color: #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: -2px;
+			right: -12px;
+			font-size: 12px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="javascript:;">GrUber Shopping Cart</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+					aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link cart-item-count" href="cart.html" data-cesta-feira-items-count>
+							<span class="fa fa-shopping-cart"></span> Shopping Cart
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="p-2 px-3 text-uppercase">Product</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Quantity</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Price</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Item Total</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Remove</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-items"></tbody>
+                            <tfoot>
+                                <tr>
+                                    <td><a href="javascript:;" class="btn btn-danger" data-cesta-feira-clear-basket>Clear Cart</a></td>
+                                    <td> </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                <div class="col-lg-6">
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+                        <div class="input-group mb-4 border rounded-pill p-2">
+                            <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+                            <div class="input-group-append border-0">
+                                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong id="subtotal-value">$0.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong id="tax-value">$0.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom">
+                                <strong class="text-muted">Total</strong>
+                                <h5 class="font-weight-bold" id="total-value">$0</h5>
+                            </li>
+                        </ul><a href="checkout.html" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<!-- /.container -->
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">GrUber</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.12/jstorage.min.js"></script>
+	<script src="resources/JS/cesta-feira.js"></script>
+    <script type="application/javascript">
+
+        function initListaOrcamento() {
+          var products = $.CestaFeira({
+              debug: true
+            }).getItems(),
+            totalValueTemp = 0,
+            $cartItems = $('#cart-items');
+
+          if (!products) {
+            console.log("No items in cart!");
+            return;
+          }
+
+          function updateSubtotalValue() {
+
+            var totalValue = 0;
+
+            $.each($('[data-item-total-value]'), function (index, item) {
+              totalValue += $(item).data('item-total-value');
+            });
+
+            totalValue = parseFloat(totalValue).toFixed(2);
+
+            $('#subtotal-value').html("$" + totalValue);
+            return totalValue;
+          }
+
+          function updateTaxValue(orderTotal) {
+            var taxValue = 0;
+
+            taxValue = orderTotal * 0.07;
+            taxValue = parseFloat(taxValue).toFixed(2);
+
+            $('#tax-value').html("$" + taxValue);
+            return taxValue;
+          }
+
+          function updateTotalValue(subtotal, tax) {
+            var totalValue = 0;
+
+            totalValue = Number(subtotal) + Number(tax) + 10;
+
+            $('#total-value').html("$" + parseFloat(totalValue).toFixed(2));
+          }
+
+          function mountLayout(index, data) {
+            var totalValueTemp = parseFloat(data.unity_price) * parseInt(data.quantity);
+
+            var $layout = "<tr id='product-"+ index +"'><td class='col-sm-8 col-md-6'><div class='media'>" +
+              "<img class='d-flex align-self-center mr-3' src='"+data.product_img+"' alt=''>" +
+              "<div class='media-body'>" +
+              "<h5 class='mt-0'>"+ data.product_name +"</h5>" +
+              "</div></div></td><td class='col-sm-1 col-md-1' style='text-align: center'>" + data.quantity +
+              "<td class='col-sm-1 col-md-1 text-center'><strong>$"+ data.unity_price +"</strong></td>" +
+              "<td class='col-sm-1 col-md-1 text-center' data-item-total-value='"+totalValueTemp+"'><strong>$"+parseFloat(totalValueTemp).toFixed(2)+"</strong></td>" +
+              "<td class='col-sm-1 col-md-1'>" +
+              "<a href='javascript:;' class='btn btn-danger fa fa-trash' data-cesta-feira-delete-item='"+ index +"'><span class='sr-only'>Remove</span></a>" +
+              "</td></tr>";
+
+            $cartItems.append($layout);
+          }
+
+
+          $.each(products, function (index, value) {
+            mountLayout(index, value);
+          });
+
+          var subtotal = updateSubtotalValue();
+          var tax = updateTaxValue(subtotal);
+          updateTotalValue(subtotal, tax);
+
+          $(document).on('click', 'a[data-cesta-feira-delete-item]', function(e) {
+            e.preventDefault();
+
+            var productId = $(this).data('cesta-feira-delete-item');
+
+            if($(document).on('cesta-feira-item-deleted')){
+              $('#product-'+productId).fadeOut(500, function() {
+                $(this).remove();
+                updateTotalValue(updateSubtotalValue(), updateTaxValue());
+              });
+            }
+          });
+
+          $(document).on('cesta-feira-clear-basket', function (e) {
+            $('#cart-items tr').each(function (index, value) {
+              $(value).fadeOut(500, function() {
+                $(this).remove();
+                updateTotalValue(updateSubtotalValue(), updateTaxValue());
+              });
+            });
+          });
+
+        }
+
+        $(document).ready(function () {
+
+          initListaOrcamento();
+
+        });
+    </script>
+</body>
+</html>
